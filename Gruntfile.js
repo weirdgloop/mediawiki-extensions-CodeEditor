@@ -4,7 +4,7 @@
  * @package CodeEditor
  */
 
-/* eslint-env node */
+/* eslint-env node, es6 */
 
 module.exports = function ( grunt ) {
 	var conf = grunt.file.readJSON( 'extension.json' );
@@ -14,18 +14,17 @@ module.exports = function ( grunt ) {
 	grunt.loadNpmTasks( 'grunt-eslint' );
 	grunt.loadNpmTasks( 'grunt-exec' );
 	grunt.loadNpmTasks( 'grunt-stylelint' );
-	grunt.loadNpmTasks( 'grunt-jsonlint' );
 
 	grunt.initConfig( {
 		eslint: {
 			options: {
-				cache: true
+				cache: true,
+				fix: grunt.option( 'fix' )
 			},
 			all: [
-				'**/*.js',
-				'!node_modules/**',
+				'**/*.{js,json}',
 				'!modules/ace/**',
-				'!vendor/**'
+				'!{vendor,node_modules}/**'
 			]
 		},
 		stylelint: {
@@ -37,13 +36,11 @@ module.exports = function ( grunt ) {
 				'!vendor/**'
 			]
 		},
-		banana: conf.MessagesDirs,
-		jsonlint: {
-			all: [
-				'**/*.json',
-				'!node_modules/**',
-				'!vendor/**'
-			]
+		banana: {
+			options: {
+				requireLowerCase: false
+			},
+			all: conf.MessagesDirs.CodeEditor
 		},
 		exec: {
 			'npm-update-ace': {
@@ -80,6 +77,6 @@ module.exports = function ( grunt ) {
 	} );
 
 	grunt.registerTask( 'update-ace', [ 'exec:npm-update-ace', 'clean:ace', 'copy:ace', 'copy:ace-license' ] );
-	grunt.registerTask( 'test', [ 'eslint', 'stylelint', 'jsonlint', 'banana' ] );
+	grunt.registerTask( 'test', [ 'eslint', 'stylelint', 'banana' ] );
 	grunt.registerTask( 'default', 'test' );
 };
