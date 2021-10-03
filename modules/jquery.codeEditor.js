@@ -343,6 +343,9 @@
 			setupCodeEditor: function () {
 				var box, lang, basePath, container, editdiv, session;
 
+				// WGL - Add version parameter to allow for long-term caching.
+				ace.config.set( 'suffix' , '.js?version=' + ace.version );
+
 				box = context.$textarea;
 				lang = mw.config.get( 'wgCodeEditorCurrentLanguage' );
 				basePath = mw.config.get( 'wgExtensionAssetsPath', '' );
