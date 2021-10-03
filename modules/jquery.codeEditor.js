@@ -325,6 +325,9 @@
 			 * Sets up the iframe in place of the textarea to allow more advanced operations
 			 */
 			setupCodeEditor: function () {
+				// WGL - Add version parameter to allow for long-term caching.
+				ace.config.set( 'suffix' , '.js?version=' + ace.version );
+
 				var $box = context.$textarea;
 				var lang = mw.config.get( 'wgCodeEditorCurrentLanguage' );
 				var basePath = mw.config.get( 'wgExtensionAssetsPath', '' );
