@@ -472,7 +472,7 @@
 						// Line numbers in CodeEditor are zero-based
 						context.codeEditor.navigateTo( selectedLine - 1, 0 );
 						// Scroll up a bit to give some context
-						context.codeEditor.scrollToRow( selectedLine - 4 );
+						context.codeEditor.scrollToLine( selectedLine - 1, true );
 					}
 				}
 
