@@ -31,7 +31,10 @@ $( function () {
 	// Add code editor module
 	$wpTextbox1.wikiEditor( 'addModule', 'codeEditor' );
 
-	$wpTextbox1.on( 'wikiEditor-toolbar-doneInitialSections', function () {
+	// Previous trigger (prone to race conditions):
+	// $wpTextbox1.on( 'wikiEditor-toolbar-doneInitialSections', function () {
+	// New 'n' improved trigger:
+	mw.hook( 'wikiEditor.toolbarReady' ).add( function() {
 		$wpTextbox1.data( 'wikiEditor-context' ).fn.codeEditorMonitorFragment();
 	} );
 } );
