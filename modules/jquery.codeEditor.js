@@ -738,6 +738,16 @@
 			},
 
 			/**
+			 * Replace the current selection with the given text.
+			 * DO NOT CALL THIS DIRECTLY, use $.textSelection( 'functionname', options ) instead
+			 *
+			 * @param {string} text
+			 */
+			replaceSelection: function ( text ) {
+				context.codeEditor.insert( text );
+			},
+
+			/**
 			 * Inserts text at the begining and end of a text selection, optionally inserting text at the caret when
 			 * selection is empty.
 			 * DO NOT CALL THIS DIRECTLY, use $.textSelection( 'functionname', options ) instead
