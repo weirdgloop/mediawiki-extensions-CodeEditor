@@ -80,6 +80,7 @@ class Hooks implements
 		$lang = self::getPageLanguage( $title, $model, $format );
 		if ( $lang && $this->userOptionsLookup->getOption( $output->getUser(), 'usebetatoolbar' ) ) {
 			$output->addModules( 'ext.codeEditor' );
+			$output->addModuleStyles( 'ext.codeEditor.styles' );
 			$output->addJsConfigVars( 'wgCodeEditorCurrentLanguage', $lang );
 			// Needed because ACE adds a blob: url web-worker.
 			$output->getCSP()->addScriptSrc( 'blob:' );
