@@ -10,7 +10,7 @@
 	"license-name": "GPL-2.0-or-later AND BSD-3-Clause",
 	"type": "editor",
 	"requires": {
-		"MediaWiki": ">= 1.39.0",
+		"MediaWiki": ">= 1.41",
 		"extensions": {
 			"WikiEditor": ">= 0.5.2"
 		}
@@ -24,7 +24,8 @@
 		"CodeEditorHooks": {
 			"class": "MediaWiki\\Extension\\CodeEditor\\Hooks",
 			"services": [
-				"UserOptionsLookup"
+				"UserOptionsLookup",
+				"HookContainer"
 			]
 		}
 	},
@@ -38,6 +39,10 @@
 	},
 	"ResourceModules": {
 		"ext.codeEditor": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
 			"scripts": "ext.codeEditor.js",
 			"dependencies": [
 				"jquery.codeEditor"
@@ -52,6 +57,10 @@
 			"styles": "jquery.codeEditor.less"
 		},
 		"jquery.codeEditor": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
 			"scripts": "jquery.codeEditor.js",
 			"dependencies": [
 				"ext.wikiEditor",
@@ -111,6 +120,10 @@
 			}
 		},
 		"ext.codeEditor.ace": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
 			"group": "ext.codeEditor.ace",
 			"scripts": [
 				"ace/ace.js",
@@ -126,6 +139,10 @@
 			]
 		},
 		"ext.codeEditor.ace.modes": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
 			"group": "ext.codeEditor.ace",
 			"scripts": [
 				"ace/mode-c_cpp.js",
