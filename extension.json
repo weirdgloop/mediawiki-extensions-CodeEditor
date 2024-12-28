@@ -9,7 +9,7 @@
 	"license-name": "GPL-2.0-or-later AND BSD-3-Clause",
 	"type": "editor",
 	"requires": {
-		"MediaWiki": ">= 1.41",
+		"MediaWiki": ">= 1.43",
 		"extensions": {
 			"WikiEditor": ">= 0.5.2"
 		}
@@ -38,10 +38,6 @@
 	},
 	"ResourceModules": {
 		"ext.codeEditor": {
-			"targets": [
-				"desktop",
-				"mobile"
-			],
 			"scripts": "ext.codeEditor.js",
 			"dependencies": [
 				"jquery.codeEditor"
@@ -49,17 +45,9 @@
 			"group": "ext.wikiEditor"
 		},
 		"ext.codeEditor.styles": {
-			"targets": [
-				"desktop",
-				"mobile"
-			],
 			"styles": "jquery.codeEditor.less"
 		},
 		"jquery.codeEditor": {
-			"targets": [
-				"desktop",
-				"mobile"
-			],
 			"scripts": "jquery.codeEditor.js",
 			"dependencies": [
 				"ext.wikiEditor",
@@ -92,7 +80,7 @@
 			"group": "ext.wikiEditor"
 		},
 		"ext.codeEditor.icons": {
-			"class": "ResourceLoaderImageModule",
+			"class": "MediaWiki\\ResourceLoader\\ImageModule",
 			"selectorWithoutVariant": ".oo-ui-icon-{name}",
 			"selectorWithVariant": ".oo-ui-image-{variant}.oo-ui-icon-{name}",
 			"variants": {
@@ -119,10 +107,6 @@
 			}
 		},
 		"ext.codeEditor.ace": {
-			"targets": [
-				"desktop",
-				"mobile"
-			],
 			"group": "ext.codeEditor.ace",
 			"scripts": [
 				"lib/ace/ace.js",
@@ -138,10 +122,6 @@
 			]
 		},
 		"ext.codeEditor.ace.modes": {
-			"targets": [
-				"desktop",
-				"mobile"
-			],
 			"group": "ext.codeEditor.ace",
 			"scripts": [
 				"lib/ace/mode-c_cpp.js",
